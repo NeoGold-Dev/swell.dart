@@ -1,6 +1,6 @@
 import 'package:swell/swell.dart';
 
 void main() {
-  var awesome = Awesome();
+  var awesome = Swell();
   print('awesome: ${awesome.isAwesome}');
 }
