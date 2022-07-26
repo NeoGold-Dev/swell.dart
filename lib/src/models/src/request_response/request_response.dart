@@ -3,14 +3,22 @@ import 'package:swell/src/models/models.dart';
 
 part 'request_response.g.dart';
 
-@JsonSerializable()
-class RequestResponse {
+@JsonSerializable(genericArgumentFactories: true)
+class RequestResponse<T> {
   int count;
-  List<Product> results;
+  List<T> results;
 
   RequestResponse({required this.count, required this.results});
 
-  factory RequestResponse.fromJson(Map<String, dynamic> json) =>
-      _$RequestResponseFromJson(json);
-  Map<String, dynamic> toJson() => _$RequestResponseToJson(this);
+  factory RequestResponse.fromJson(
+    Map<String, dynamic> json,
+    T Function(Object? json) fromJsonT,
+  ) =>
+      _$RequestResponseFromJson<T>(json, fromJsonT);
+
+  Map<String, dynamic> toJson<T>(
+    RequestResponse<T> instance,
+    Object? Function(T value) toJsonT,
+  ) =>
+      _$RequestResponseToJson<T>(instance, toJsonT);
 }

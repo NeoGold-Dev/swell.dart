@@ -18,19 +18,22 @@ class _SwellApi implements SwellApi {
   String? baseUrl;
 
   @override
-  Future<RequestResponse> getProducts(limit) async {
+  Future<RequestResponse<Product>> getProducts(limit) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'limit': limit};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<RequestResponse>(
+        _setStreamType<RequestResponse<Product>>(
             Options(method: 'GET', headers: _headers, extra: _extra)
                 .compose(_dio.options, '/products',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = RequestResponse.fromJson(_result.data!);
+    final value = RequestResponse<Product>.fromJson(
+      _result.data!,
+      (json) => Product.fromJson(json as Map<String, dynamic>),
+    );
     return value;
   }
 

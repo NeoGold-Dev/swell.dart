@@ -10,5 +10,5 @@ abstract class SwellApi {
   factory SwellApi(Dio dio, {String baseUrl}) = _SwellApi;
 
   @GET("/products")
-  Future<RequestResponse> getProducts(@Query("limit") String? limit);
+  Future<RequestResponse<Product>> getProducts(@Query("limit") String? limit);
 }
