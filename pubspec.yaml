@@ -1,6 +1,6 @@
 name: swell
 description: This is an non official dart swell api for swell.is 
-version: 0.0.1
+version: 0.0.2
 homepage: https://github.com/NeoGold-Dev/swell.dart
 
 repository: https://github.com/NeoGold-Dev/swell.dart
@@ -25,5 +25,12 @@ dev_dependencies:
   retrofit_generator: '>=4.0.0 <5.0.0' 
   json_serializable: '>4.4.0'
   build_runner: ^2.2.0
-dependencies: {crypto: ^3.0.2, json_annotation: ^4.6.0, logger: ^1.1.0, pretty_dio_logger: ^1.2.0-beta-1, retrofit: ^3.0.1+1}
+
+dependencies: {crypto: ^3.0.2, 
+  dio: ^4.0.6,
+  dotenv: ^4.0.1, json_annotation: ^4.6.0, 
+  logger: ^1.1.0, 
+  pretty_dio_logger: ^1.2.0-beta-1, 
+  retrofit: ^3.0.1+1
+}
   

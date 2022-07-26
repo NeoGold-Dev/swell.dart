@@ -13,6 +13,7 @@ RequestResponse<T> _$RequestResponseFromJson<T>(
     RequestResponse<T>(
       count: json['count'] as int,
       results: (json['results'] as List<dynamic>).map(fromJsonT).toList(),
+      page: json['page'] as int,
     );
 
 Map<String, dynamic> _$RequestResponseToJson<T>(
@@ -22,4 +23,5 @@ Map<String, dynamic> _$RequestResponseToJson<T>(
     <String, dynamic>{
       'count': instance.count,
       'results': instance.results.map(toJsonT).toList(),
+      'page': instance.page,
     };

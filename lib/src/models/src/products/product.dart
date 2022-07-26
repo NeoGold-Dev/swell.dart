@@ -15,8 +15,8 @@ class Product {
       {required this.id,
       required this.name,
       required this.price,
-      this.active,
       required this.description,
+      this.active,
       this.sku});
 
   factory Product.fromJson(Map<String, dynamic> json) =>

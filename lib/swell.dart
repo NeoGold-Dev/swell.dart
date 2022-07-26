@@ -4,5 +4,4 @@
 library swell;
 
 export 'src/swell_base.dart';
-
-// TODO: Export any libraries intended for clients of this package.
+export 'src/models/models.dart';

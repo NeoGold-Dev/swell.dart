@@ -7,8 +7,10 @@ part 'request_response.g.dart';
 class RequestResponse<T> {
   int count;
   List<T> results;
+  int page;
 
-  RequestResponse({required this.count, required this.results});
+  RequestResponse(
+      {required this.count, required this.results, required this.page});
 
   factory RequestResponse.fromJson(
     Map<String, dynamic> json,

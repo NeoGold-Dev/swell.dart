@@ -18,10 +18,10 @@ class _SwellApi implements SwellApi {
   String? baseUrl;
 
   @override
-  Future<RequestResponse<Product>> getProducts(limit) async {
+  Future<RequestResponse<Product>> getProducts(queries) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'limit': limit};
-    queryParameters.removeWhere((k, v) => v == null);
+    final queryParameters = <String, dynamic>{};
+    queryParameters.addAll(queries);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
@@ -33,6 +33,42 @@ class _SwellApi implements SwellApi {
     final value = RequestResponse<Product>.fromJson(
       _result.data!,
       (json) => Product.fromJson(json as Map<String, dynamic>),
+    );
+    return value;
+  }
+
+  @override
+  Future<Product> getProduct(id) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<Product>(
+            Options(method: 'GET', headers: _headers, extra: _extra)
+                .compose(_dio.options, '/products/${id}',
+                    queryParameters: queryParameters, data: _data)
+                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = Product.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<RequestResponse<Account>> getAccounts(queries) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.addAll(queries);
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<RequestResponse<Account>>(
+            Options(method: 'GET', headers: _headers, extra: _extra)
+                .compose(_dio.options, '/accounts',
+                    queryParameters: queryParameters, data: _data)
+                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = RequestResponse<Account>.fromJson(
+      _result.data!,
+      (json) => Account.fromJson(json as Map<String, dynamic>),
     );
     return value;
   }

@@ -10,8 +10,8 @@ Product _$ProductFromJson(Map<String, dynamic> json) => Product(
       id: json['id'] as String,
       name: json['name'] as String,
       price: (json['price'] as num).toDouble(),
-      active: json['active'] as bool?,
       description: json['description'] as String,
+      active: json['active'] as bool?,
       sku: json['sku'] as String?,
     );
 
