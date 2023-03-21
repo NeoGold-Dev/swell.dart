@@ -34,7 +34,7 @@ void main() {
       last_name: "Bob",
       email_optin: true,
       password: "password1234+");
-  // client.register(newAccount).then((value) => print(value));
+  client.register(newAccount).then((value) => print(value));
 
   final credential =
       LoginCredential(email: "mail@me.com", password: "password1234+");
