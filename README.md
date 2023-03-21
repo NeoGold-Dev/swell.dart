@@ -11,7 +11,7 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages). 
 -->
 
-This is an non official swell api for swell.is 
+This is an non official swell api for swell.is
 
 ## Features
 
@@ -35,7 +35,9 @@ This is an non official swell api for swell.is
 swell.products.get()
 
 ```dart
-const like = 'sample';
+final client = SwellApi(dio, baseUrl: Swell.instance.url.toString());
+
+  client.getProducts({}).then((it) => print(it.results));
 ```
 
 ## Additional information

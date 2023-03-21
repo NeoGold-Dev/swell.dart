@@ -1,6 +1,6 @@
 name: swell
 description: This is an non official dart swell api for swell.is 
-version: 0.0.2
+version: 0.0.3
 homepage: https://github.com/NeoGold-Dev/swell.dart
 
 repository: https://github.com/NeoGold-Dev/swell.dart
