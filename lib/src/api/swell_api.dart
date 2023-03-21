@@ -1,7 +1,9 @@
-import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
+import 'package:retrofit/retrofit.dart';
 import 'package:swell/src/models/models.dart';
 import 'package:swell/src/models/src/accounts/account.dart';
+import 'package:swell/src/models/src/accounts/account_register.dart';
+import 'package:swell/src/models/src/accounts/login_credential.dart';
 import 'package:swell/src/models/src/request_response/request_response.dart';
 
 part 'swell_api.g.dart';
@@ -16,6 +18,12 @@ abstract class SwellApi {
 
   @GET("/products/{id}")
   Future<Product> getProduct(@Path() String id);
+
+  @POST("/accounts/login")
+  Future<RequestResponse<Account>> login(@Body() LoginCredential credential);
+
+  @POST("/accounts")
+  Future<RequestResponse<Account>> register(@Body() AccountRegister account);
 
   @GET("/accounts")
   Future<RequestResponse<Account>> getAccounts(
